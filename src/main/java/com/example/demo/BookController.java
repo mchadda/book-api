@@ -27,7 +27,7 @@ public class BookController {
 		return bookService.findAll();
 	}
 
-	//Fetch a book
+	// Fetch a book
 	@GetMapping("/{id}")
 	public Optional<Book> findById(@PathVariable Long id) {
 		return bookService.findById(id);
