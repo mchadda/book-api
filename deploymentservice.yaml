@@ -1,19 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment # Kubernetes resource kind we are creating
 metadata:
-  name: spring-boot-k8s-deployment
+  name: books-api-k8s-deployment
 spec:
   selector:
     matchLabels:
-      app: spring-boot-k8s
-  replicas: 2 # Number of replicas that will be created for this deployment
+      app: books-api
+  replicas: 1 # Number of replicas that will be created for this deployment
   template:
     metadata:
       labels:
-        app: spring-boot-k8s
+        app: books-api
     spec:
       containers:
-        - name: spring-boot-k8s
+        - name: books-api
           image: mchadda40/book-api:latest # Image that will be used to containers in the cluster
           imagePullPolicy: Always
           ports:
@@ -28,7 +28,7 @@ metadata: # Metadata of the resource kind we are creating
   name: springboot-k8ssvc
 spec:
   selector:
-    app: spring-boot-k8s
+    app: books-api
   ports:
     - protocol: "TCP"
       port: 9090 # The port that the service is running on in the cluster
